@@ -1,5 +1,6 @@
 from selenium import webdriver
 import time
+import os
 class WhatsappBot:
     global BotOP
     BotOP = 1
@@ -11,7 +12,7 @@ class WhatsappBot:
         self.grupos = ["Estágio"]
         options = webdriver.ChromeOptions()
         options.add_argument('lang=pt-br')
-        self.driver = webdriver.Chrome("C:\\Users\\Aluno\\Desktop\\Whats bot\\chromedriver.exe")
+        self.driver = webdriver.Chrome(os.path.normpath("C:\\Users\\Aluno\\Desktop\\Whats bot\\chromedriver.exe"))
         self.driver.get("https://web.whatsapp.com")
         time.sleep(30)
     
@@ -52,7 +53,10 @@ class WhatsappBot:
         time.sleep(5)
     def CapturarResposta(self):
         #fazer baseado no video https://www.youtube.com/watch?v=_ge6QcYY34I
-        a
+        
+        #<div class="_1Gy50">
+        count = self.driver.find_elements_by_xpath(".//div[@class='_1Gy50'][-1]").text
+
     def lerArquivo(self,rota: str):
 
         Arquivo = open(rota, mode ='r', encoding='utf-8')
