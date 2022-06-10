@@ -1,14 +1,9 @@
-from logging import root
-from platform import node
-import json
-from sqlalchemy import null
-
 class Node:
 
    def __init__(self,Dicionario):
        self.Dicionario = Dicionario
        self.filhos = []
-       self.pai = None 
+       self.pai = None
 
    def getpai(self):
       return self.pai
@@ -28,14 +23,7 @@ class Node:
    def setDicionario(self,RefDicionario):
       self.Dicionario = RefDicionario
 
-   def ShowOptions(self):
-       print(self.Dicionario)
-
-   def ShowFilho(self,pos):
-      a = self.getfilhos()
-      a = a[pos]
-      print(a.getDicionario())
-           
+         
        
 class Tree:
 
@@ -49,7 +37,6 @@ class Tree:
       global NoDic_1_2
       global NoDic_1_3
       global NoDic_1_4
-      global NoDic_1_5
       global NoDic_1_1_3
       
 
@@ -59,7 +46,7 @@ class Tree:
       dic_1= {'Coordenação': 1,'Estágio': 2, 'Pesquisa': 3, 'Extensão': 4}
       
       NoDic_1 = Node(dic_1) #criação do primeiro nó
-      rootNode.setfilhos(NoDic_1) #Primeiro nó se torna filho da raiz
+      rootNode.setfilhos(NoDic_1) #nó se torna filho da raiz
       NoDic_1.setpai(rootNode) # raiz se torna pai do primeiro nó
       #endregion
 
@@ -305,35 +292,26 @@ class Tree:
    def getroot(self):
       return rootNode
 
-   #def NextOp(self,No,entrada):
-      #refazer metodo, não funcional
-    #  a = Node(No)
-    #  b = a.getfilhos()
-    #  i =0 
-      #não entra no for????? retorna None 
-    #  for i in b:  
-    #     if(dict(b[i]).values() == entrada):       
-    #        return Node(b[i])
    def BackOp(self,No):
-      a = Node(No)
-      b = a.getpai
+      a = No
+      b = a.getpai()
       return b
 
-   def FirstNode(self):   
-      a = rootNode   
-      b = Node(a).getfilhos()
-      x = b[0]
-      return x
+   def NextNode(self, NoEntrada, NumFilho):   
+      a = NoEntrada  # a contem o nó enviado
+      NumFilho = NumFilho - 1 # o numeração da lista começa em 0, o numero recebido vai ser 1 a mais que na lista
+      b = a.getfilhos()    # b contem a lista de filhos
+      c = b[NumFilho]      # c contem nó filho desejado 
+      return c
 
 
 if __name__ == "__main__":
       #teste
       t = Tree()
-      #rootNode.ShowOptions()    
-      #falta fazer NextOp ser funcional
-      #Next = t.NextOp(0)
-      #print(Next)
-
-      print()      
+      a = t.getroot()
+      a = t.NextNode(a,1)
+      a = t.NextNode(a,2)
+      a = t.BackOp(a)
+      print(a.getDicionario()) 
    
       
