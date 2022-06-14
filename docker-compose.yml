@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  whatsbot:
+    image: whatsbot
+    build:
+      context: .
+      dockerfile: ./Dockerfile
