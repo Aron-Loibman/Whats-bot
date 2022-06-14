@@ -30,7 +30,7 @@ class Tree:
    def __init__(self):
       #region 1º nivel, Raiz e primeiro nó
       self.root =  {'Olá sou o UnicapBot, em quais das categorias a seguir eu poderia lhe auxiliar?'}
-      
+      global rootNode
       rootNode = Node(self.root) #criação do nó raiz
   
       dic_1= {'Coordenação': 1,'Estágio': 2, 'Pesquisa': 3, 'Extensão': 4} 
@@ -379,7 +379,7 @@ class Tree:
       #endregion
 
    def getroot(self):
-      return self.rootNode
+      return rootNode
 
    def BackOp(self,No):
       a = No
@@ -391,16 +391,4 @@ class Tree:
       NumFilho = NumFilho - 1 # o numeração da lista começa em 0, o numero recebido vai ser 1 a mais que na lista
       b = a.getfilhos()    # b contem a lista de filhos
       c = b[NumFilho]      # c contem nó filho desejado 
-      return c
-
-
-if __name__ == "__main__":
-      #teste
-      t = Tree()
-      a = t.getroot()
-      a = t.NextNode(a,1)
-      a = t.NextNode(a,2)
-      a = t.BackOp(a)
-      print(a.getDicionario()) 
-   
-      
+      return c      
